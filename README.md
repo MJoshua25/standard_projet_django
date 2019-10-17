@@ -3,23 +3,18 @@
 ## 1. Installation
   1. Creer un dossier <> et l ouvrir avec VS code
   2. Dans le terminal de visual studio code creer l environnement virtuel et installer Django
-  3.1. Sur iMAC python3 -m venv venv activer l environnement virtuel : source venv/bin/activate installer Django : pip3 install django
-  3.1.2 Sur Windows python -m venv venv activer l environnement virtuel : source venv/Script/activate installer Django : pip install django
+    2.1. Sur iMAC python3 -m venv venv activer l environnement virtuel : source venv/bin/activate installer Django : pip3 install django
+    2.2 Sur Windows python -m venv venv activer l environnement virtuel : source venv/Script/activate installer Django : pip install django
 
-Creation dossiers
-Creer un dossier <<projet_tuto>> dans le dossier <>
-
-Ensuite creer deux dossier dans le dossier <<projet_tuto>> media_cdn et static_cdn
-
-Puis dans ce dossier <<projet_tuto>> creer le projet et l application avec ses commandes: - Sur iMAC et Windows django-admin startproject myproject python manage.py startapp myapp
-
-Le dossier myproject aura plusieurs fichiers a l interieur ouvrez le fichier settings.py et configurer ainsi:
-Dans INSTALLED_APPS mettez le nom de votre application
-    INSTALLED_APPS = [
-    'myapp.apps.MyappConfig',
-
-]
+## 2. Creation dossiers
+  1. Créer le projet en exécutant la commande `django-admin startproject projet_tuto`
+  2. Créer les dossiers suivants:
+    2.1. media_cdn : où seront stockés les fichiers des models
+    2.2. statut_cdn : où seront stockés les fichiers static
+    
+## 3. settings.py
 Dans TEMPLATES ajouter le nom du dossier qui contiendra les TEMPLATES
+```
     TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -34,8 +29,11 @@ Dans TEMPLATES ajouter le nom du dossier qui contiendra les TEMPLATES
             ],
         },
     },
-]
-A la fin du settings.py ajouter ces routes
+  ]
+  ```
+A la fin du fichier, remplacer `STATIC_URL = '/static/'`
+par :
+```
     STATIC_URL = '/static/'
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
@@ -43,37 +41,24 @@ A la fin du settings.py ajouter ces routes
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, '../media_cdn')
     STATIC_ROOT = os.path.join(BASE_DIR, '../static_cdn')
-Dans le dossier myproject et dans le fichier urls.py completer avec ce code:
+```
+
+## 4. urls.py
+  Contenu du fichier:
+```
     from django.contrib import admin
     from django.urls import path,include
     from django.conf import settings
     from django.conf.urls.static import static
 
     urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('myapp.urls')),
-
+      path('admin/', admin.site.urls),
     ]
 
     if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
         urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-Et creer le fichier urls.py dans le dossier myapp et ajouter ce code:
-    from django.contrib import admin
-    from django.urls import path,include
-    from . import views
+```
 
-    app_name = 'myapp'
-    urlpatterns = [
-        path('', views.home, name='home'),
-    
-    ]
-Dans le fichier views.py de myapp :
-    def home(request):
-
-        data={}
-        return render(request, 'home.html',data)
-Creer le dossier templates au meme niveau que les dossiers myapp et myproject et ajouter fichier html avec votre code html
-Enfin lancer le serveur avec cette commande et ouvrez le lien qui s'affiche dans le votre navigateur
-- commande pour lancer le serveur sur iMAC et Windows : 
-    python manage.py runserver
+## 5. fin
+  executer cette commande pour l'instant: `python manage.py runserver`
