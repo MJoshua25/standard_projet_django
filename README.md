@@ -1,0 +1,1 @@
+# standard_projet_django
