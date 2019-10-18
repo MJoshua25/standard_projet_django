@@ -3,8 +3,8 @@
 ## 1. Installation
   1. Creer un dossier <> et l ouvrir avec VS code
   2. Dans le terminal de visual studio code creer l environnement virtuel et installer Django
-    2.1. Sur iMAC python3 -m venv venv activer l environnement virtuel : source venv/bin/activate installer Django : pip3 install django
-    2.2 Sur Windows python -m venv venv activer l environnement virtuel : source venv/Script/activate installer Django : pip install django
+    1. Sur iMAC python3 -m venv venv activer l environnement virtuel : source venv/bin/activate installer Django : pip3 install django
+    2. Sur Windows python -m venv venv activer l environnement virtuel : source venv/Script/activate installer Django : pip install django
 
 ## 2. Creation dossiers
   1. Créer le projet en exécutant la commande `django-admin startproject projet_tuto`
@@ -14,7 +14,7 @@
     
 ## 3. settings.py
 Dans TEMPLATES ajouter le nom du dossier qui contiendra les TEMPLATES
-```
+```python
     TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -33,7 +33,7 @@ Dans TEMPLATES ajouter le nom du dossier qui contiendra les TEMPLATES
   ```
 A la fin du fichier, remplacer `STATIC_URL = '/static/'`
 par :
-```
+```python
     STATIC_URL = '/static/'
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
@@ -45,7 +45,7 @@ par :
 
 ## 4. urls.py
   Contenu du fichier:
-```
+```python
     from django.contrib import admin
     from django.urls import path,include
     from django.conf import settings
