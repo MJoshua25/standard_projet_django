@@ -10,7 +10,10 @@
   1. Créer le projet en exécutant la commande `django-admin startproject projet_tuto`
   2. Créer les dossiers suivants:
       1. media_cdn : où seront stockés les fichiers des models
-      2. statut_cdn : où seront stockés les fichiers static
+      2. static_cdn : où seront stockés les fichiers static accéssible par depuis l'extérieur de django
+  3. Créer les dossiers suivants à l'intérieur du dossier <projet_tuto>:
+      1. static : où seront stockés les fichiers static
+      2. templates : où seront stockés les fichiers html avec lesquels django travaillera
     
 ## 3. settings.py
 
@@ -32,10 +35,12 @@
             },
         },
       ]
-      ```
-A la fin du fichier, remplacer `STATIC_URL = '/static/'`
-par :
-```python
+  ```
+  
+  ### 2. Fichier static et media
+   A la fin du fichier 'setting.py', remplacer `STATIC_URL = '/static/'`
+  par :
+  ```python
     STATIC_URL = '/static/'
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
@@ -43,7 +48,7 @@ par :
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, '../media_cdn')
     STATIC_ROOT = os.path.join(BASE_DIR, '../static_cdn')
-```
+  ```
 
 ## 4. urls.py
   Contenu du fichier:
