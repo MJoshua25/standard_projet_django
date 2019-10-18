@@ -3,34 +3,36 @@
 ## 1. Installation
   1. Creer un dossier <> et l ouvrir avec VS code
   2. Dans le terminal de visual studio code creer l environnement virtuel et installer Django
-      * Sur iMAC python3 -m venv venv activer l environnement virtuel : source venv/bin/activate installer Django : pip3 install django
-      * Sur Windows python -m venv venv activer l environnement virtuel : source venv/Script/activate installer Django : pip install django
+      * Sur iMAC `python3 -m venv venv` activer l environnement virtuel : `source venv/bin/activate` installer Django : `pip3 install django`
+      * Sur Windows `python -m venv venv` activer l environnement virtuel : `source venv/Script/activate` installer Django : `pip install django`
 
 ## 2. Creation dossiers
   1. Créer le projet en exécutant la commande `django-admin startproject projet_tuto`
   2. Créer les dossiers suivants:
-    2.1. media_cdn : où seront stockés les fichiers des models
-    2.2. statut_cdn : où seront stockés les fichiers static
+      2.1. media_cdn : où seront stockés les fichiers des models
+      2.2. statut_cdn : où seront stockés les fichiers static
     
 ## 3. settings.py
-Dans TEMPLATES ajouter le nom du dossier qui contiendra les TEMPLATES
-```python
-    TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
+
+  ### 1. TEMPLATES
+   Dans TEMPLATES ajouter le nom du dossier qui contiendra les TEMPLATES
+    ```python
+        TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': ['templates'],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
         },
-    },
-  ]
-  ```
+      ]
+      ```
 A la fin du fichier, remplacer `STATIC_URL = '/static/'`
 par :
 ```python
