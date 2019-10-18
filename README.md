@@ -9,14 +9,14 @@
 ## 2. Creation dossiers
   1. Créer le projet en exécutant la commande `django-admin startproject projet_tuto`
   2. Créer les dossiers suivants:
-      2.1. media_cdn : où seront stockés les fichiers des models
-      2.2. statut_cdn : où seront stockés les fichiers static
+    2.1. media_cdn : où seront stockés les fichiers des models
+    2.2. statut_cdn : où seront stockés les fichiers static
     
 ## 3. settings.py
 
   ### 1. TEMPLATES
    Dans TEMPLATES ajouter le nom du dossier qui contiendra les TEMPLATES
-    ```python
+   ```python
         TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
